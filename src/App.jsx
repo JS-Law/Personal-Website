@@ -1,12 +1,8 @@
+// src/App.jsx
 import React from 'react';
-import Hero from './components/Hero';
+import Home from './pages/Home';
+import './styles/main.scss';
 
-function App() {
-  return (
-    <main>
-      <Hero />
-    </main>
-  );
+export default function App() {
+  return <Home />;
 }
-
-export default App;

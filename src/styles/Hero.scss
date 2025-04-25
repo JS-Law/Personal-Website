@@ -1,43 +1,108 @@
-@use 'sass:color';
 @use './variables' as *;
 
 .hero {
-  background-color: $color-bg;
-  color: $color-text;
-  padding: 6rem 1rem;
-//   text-align: center;
-  font-family: $font-main;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-light;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
 
-  .hero__container {
-    max-width: 700px;
-    margin: 0 auto;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65); // Darker overlay
+    z-index: 1;
   }
 
-  .hero__title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+  &__overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 4rem 2rem;
+    background-color: rgba(10, 10, 10, 0.5);
+    border-radius: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  
+    background-image: url('../assets/frame-border.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
-  .hero__subtitle {
-    font-size: 1.125rem;
-    color: color.adjust($color-text, $lightness: -20%);
-    margin-bottom: 2rem;
+  &__welcome {
+    font-family: $font-header;
+    color: $color-accent;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); // Gold glow
   }
 
-  .hero__button {
-    background-color: $color-accent;
-    color: #fff;
-    padding: 0.75rem 2rem;
+  &__headline {
+    font-family: $font-header;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6); // Stronger gold glow
+  }
+
+  &__cta {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid $color-accent;
+    color: $color-accent;
+    font-family: $font-body;
     font-weight: 600;
-    font-size: 1rem;
-    border: none;
-    border-radius: 0.75rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); // Button glow
 
     &:hover {
-        background-color: color.adjust($color-accent, $lightness: -10%);
+      background-color: $color-accent;
+      color: $color-dark;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
     }
   }
 }
+
+@keyframes pulse-glow {
+    0% {
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+  }
+  
+.hero__cta {
+display: inline-block;
+padding: 0.75rem 1.5rem;
+border: 2px solid $color-accent;
+color: $color-accent;
+font-family: $font-body;
+font-weight: 600;
+text-decoration: none;
+border-radius: 0.5rem;
+transition: background-color 0.3s ease, transform 0.3s ease;
+box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+
+&:hover {
+    background-color: $color-accent;
+    color: $color-dark;
+    animation: pulse-glow 1.5s infinite;
+    transform: scale(1.05);
+}
+}
+  

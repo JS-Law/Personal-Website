@@ -1,20 +1,21 @@
+// src/components/Hero.jsx
 import React from 'react';
 import '../styles/Hero.scss';
+import heroImage from '../assets/hero-bg.jpg'; // or use CSS background instead
+
+
 
 export default function Hero() {
   return (
-    <section className="hero">
-      <div className="hero__container">
-        <h1 className="hero__title">
-            Hi, I'm Jeff. I build clean, interactive web experiences.
-            </h1>
-        <p className="hero__subtitle">
-          Frontend developer & writer — passionate about simplicity, speed, and storytelling.
-        </p>
-        <button className="hero__button">
-            View Projects
-            </button>
+    <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}> 
+      <div className="hero__overlay">
+        <h2 className="hero__welcome">Welcome</h2>
+        <h1 className="hero__headline">I build modern web applications</h1>
+        <a href="#projects" className="hero__cta">View My Work</a>
       </div>
     </section>
   );
 }
+
+
+// style={{ backgroundImage: `url(${heroImage})` }}
