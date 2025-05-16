@@ -2,7 +2,12 @@
 @use './Hero';
 @use './Header';
 
-*{
-    margin: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.home {
+  background-image: url('../Assets/gggrain.svg');
+  background-size: cover;
 }

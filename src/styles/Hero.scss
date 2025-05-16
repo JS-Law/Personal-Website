@@ -14,10 +14,10 @@
   padding: 2rem;
 
   &::before {
-    content: '';
+    // content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.65); // Darker overlay
+    background: #F9FAFB; // Darker overlay
     z-index: 1;
   }
 
@@ -26,11 +26,11 @@
     z-index: 2;
     max-width: 800px;
     padding: 4rem 2rem;
-    background-color: rgba(10, 10, 10, 0.5);
+    // background-color: rgba(10, 10, 10, 0.5);
     border-radius: 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  
-    background-image: url('../assets/frame-border.png');
+
+    // background-image: url('../assets/frame-border.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -38,11 +38,11 @@
 
   &__welcome {
     font-family: $font-header;
-    color: $color-accent;
+    color: $text-color;
     font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); // Gold glow
+    // text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); // Gold glow
   }
 
   &__headline {
@@ -75,34 +75,35 @@
 }
 
 @keyframes pulse-glow {
-    0% {
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-    }
-    100% {
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-    }
+  0% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
   }
-  
-.hero__cta {
-display: inline-block;
-padding: 0.75rem 1.5rem;
-border: 2px solid $color-accent;
-color: $color-accent;
-font-family: $font-body;
-font-weight: 600;
-text-decoration: none;
-border-radius: 0.5rem;
-transition: background-color 0.3s ease, transform 0.3s ease;
-box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 
-&:hover {
-    background-color: $color-accent;
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  }
+}
+
+.hero__cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  // border: 2px solid $color-accent;
+  color: $color-accent;
+  font-family: $font-body;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+
+  &:hover {
+    // background-color: $color-accent;
     color: $color-dark;
     animation: pulse-glow 1.5s infinite;
     transform: scale(1.05);
+  }
 }
-}
-  

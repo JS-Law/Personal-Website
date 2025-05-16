@@ -7,10 +7,10 @@ import heroImage from '../assets/hero-bg.jpg'; // or use CSS background instead
 
 export default function Hero() {
   return (
-    <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}> 
+    <section className="hero"> 
       <div className="hero__overlay">
-        <h2 className="hero__welcome">Welcome</h2>
-        <h1 className="hero__headline">I build modern web applications</h1>
+        <h2 className="hero__welcome">Hello!</h2>
+        <h1 className="hero__headline">I'm Jeff and I love to tinker. I'm currently </h1>
         <a href="#projects" className="hero__cta">View My Work</a>
       </div>
     </section>
