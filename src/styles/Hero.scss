@@ -10,61 +10,58 @@
   justify-content: center;
   color: $color-light;
   text-align: center;
-  position: relative;
-  padding: 2rem;
-
-  &::before {
-    // content: '';
-    position: absolute;
-    inset: 0;
-    background: #F9FAFB; // Darker overlay
-    z-index: 1;
-  }
+  // padding-inline-end: 2rem;
 
   &__overlay {
+    margin-inline-start: 27vw;
+    padding-inline-end: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 4rem 2rem;
-    // background-color: rgba(10, 10, 10, 0.5);
+    // max-width: 50%;
+    height: 100vh;
+    padding-inline-start: 15%;
+    padding-inline-end: 15%;
     border-radius: 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-
-    // background-image: url('../assets/frame-border.png');
     background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
+    /* From https://css.glass */
+    background: rgba(249, 250, 251, 0.15);
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.4px);
+    -webkit-backdrop-filter: blur(9.4px);
   }
 
   &__welcome {
     font-family: $font-header;
-    color: $text-color;
-    font-size: 1.5rem;
+    // text-align: left;
+    font-size: 2.5rem;
     font-weight: 400;
+    color: $color-accent;
     margin-bottom: 0.5rem;
-    // text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); // Gold glow
   }
 
   &__headline {
     font-family: $font-header;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 400;
+    color: $text-color;
     margin-bottom: 1.5rem;
     line-height: 1.2;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6); // Stronger gold glow
   }
 
   &__cta {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     border: 2px solid $color-accent;
-    color: $color-accent;
+    color: $text-color;
     font-family: $font-body;
     font-weight: 600;
     text-decoration: none;
     border-radius: 0.5rem;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); // Button glow
 
     &:hover {
       background-color: $color-accent;

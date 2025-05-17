@@ -1,7 +1,6 @@
 // src/components/Hero.jsx
 import React from 'react';
 import '../styles/Hero.scss';
-import heroImage from '../assets/hero-bg.jpg'; // or use CSS background instead
 
 
 
@@ -10,7 +9,11 @@ export default function Hero() {
     <section className="hero"> 
       <div className="hero__overlay">
         <h2 className="hero__welcome">Hello!</h2>
-        <h1 className="hero__headline">I'm Jeff and I love to tinker. I'm currently </h1>
+        <br></br>
+        <h1 className="hero__headline">
+          I'm Jeff and <i>I love</i> solving problems. I'm currently a remote support technician who spends all his free time working on projects, learning and growing my skillsets.   
+        </h1>
+        <br />
         <a href="#projects" className="hero__cta">View My Work</a>
       </div>
     </section>

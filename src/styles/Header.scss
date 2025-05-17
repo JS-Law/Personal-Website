@@ -11,7 +11,6 @@
   align-items: center;
   z-index: 10;
 
-  background: transparent;
 
   &__logo {
     font-size: 3rem;
@@ -26,19 +25,19 @@
     list-style: none;
     display: flex;
     gap: 2rem;
-    margin-inline-start: 8rem;
+    margin-inline-start: 1rem;
 
     li a {
       text-decoration: none;
       color: $text-color;
       font-family: $font-body;
       font-weight: 500;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       transition: color 0.3s ease, text-shadow 0.3s ease, font-size .3s ease;
 
       &:hover {
         color: $color-accent;
-        font-size: 1.65rem;
+        font-size: 1.30rem;
         // text-shadow: 0 0 8px rgba(212, 175, 55, 0.6); // Gold glow on hover
       }
     }
