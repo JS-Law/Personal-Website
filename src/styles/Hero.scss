@@ -55,6 +55,8 @@
   &__cta {
     display: inline-block;
     padding: 0.75rem 1.5rem;
+    margin-inline: auto;
+    max-width: 10rem;
     border: 2px solid $color-accent;
     color: $text-color;
     font-family: $font-body;
@@ -66,24 +68,10 @@
     &:hover {
       background-color: $color-accent;
       color: $color-dark;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
     }
   }
 }
 
-@keyframes pulse-glow {
-  0% {
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-  }
-
-  50% {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-  }
-
-  100% {
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-  }
-}
 
 .hero__cta {
   display: inline-block;
@@ -95,12 +83,13 @@
   text-decoration: none;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  // box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 
   &:hover {
     // background-color: $color-accent;
     color: $color-dark;
     animation: pulse-glow 1.5s infinite;
     transform: scale(1.05);
+    color: $background-color;
   }
 }
