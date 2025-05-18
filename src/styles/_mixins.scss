@@ -1,0 +1,37 @@
+// Screen sizes
+$mobile-max: 767px;
+$tablet-min: 768px;
+$tablet-max: 1023px;
+$desktop-min: 1024px;
+
+// Mobile-first approach mixins
+@mixin mobile {
+  @media (max-width: $mobile-max) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+// Custom breakpoint mixin
+@mixin breakpoint($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+// Usage examples:
+// @include mobile { ... }
+// @include tablet { ... }
+// @include desktop { ... }
+// @include breakpoint(1200px) { ... }

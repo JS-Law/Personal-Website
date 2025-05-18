@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mixins' as *;
 
 .hero {
   background-size: cover;
@@ -13,83 +14,178 @@
   // padding-inline-end: 2rem;
 
   &__overlay {
-    margin-inline-start: 27vw;
-    padding-inline-end: 25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
-    // max-width: 50%;
     height: 100vh;
-    padding-inline-start: 15%;
-    padding-inline-end: 15%;
     border-radius: 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     background-size: 100% 100%;
     /* From https://css.glass */
     background: rgba(249, 250, 251, 0.15);
-
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.4px);
     -webkit-backdrop-filter: blur(9.4px);
+
+    @include mobile {
+      margin: 0;
+      justify-content: start;
+      padding: 2rem;
+      text-align: center;
+      height: auto;
+      min-height: 100vh;
+    }
+
+    @include tablet {
+      margin-inline-start: 15vw;
+      padding: 3rem;
+      width: 75%;
+    }
+
+    @include desktop {
+      margin-inline-start: 27vw;
+      padding-inline-start: 15%;
+      padding-inline-end: 15%;
+    }
+  }
+
+  /* Fly-in animation for text elements */
+  @keyframes text-fly-in {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Apply initial state to animated elements */
+  &__welcome,
+  &__headline,
+  &__cta {
+    opacity: 0;
+    transform: translateY(50px);
+    will-change: transform, opacity;
   }
 
   &__welcome {
     font-family: $font-header;
-    // text-align: left;
-    font-size: 2.5rem;
     font-weight: 400;
     color: $color-accent;
     margin-bottom: 0.5rem;
+    animation: text-fly-in 1s ease-out forwards;
+
+    @include mobile {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    @include tablet {
+      font-size: 1.4rem;
+    }
+
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
 
   &__headline {
     font-family: $font-header;
-    font-size: 2rem;
     font-weight: 400;
     color: $text-color;
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    animation: text-fly-in 1s ease-out forwards;
+    animation-delay: 0.3s;
+
+    @include mobile {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    @include tablet {
+      font-size: 1.8rem;
+    }
+
+    @include desktop {
+      font-size: 2rem;
+    }
   }
 
   &__cta {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    margin-inline: auto;
-    max-width: 10rem;
     border: 2px solid $color-accent;
-    color: $text-color;
+    color: $color-accent;
+    /* Blue text */
+    background-color: transparent;
     font-family: $font-body;
     font-weight: 600;
     text-decoration: none;
     border-radius: 0.5rem;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    animation: text-fly-in 1s ease-out forwards;
+    animation-delay: 0.6s;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    box-shadow: 0 2px 5px rgba(59, 130, 246, 0.3);
+    /* Blue-tinted shadow */
+    position: relative;
+    will-change: transform;
+
+    @include mobile {
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+      width: 60%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    @include tablet {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      margin-inline: auto;
+      max-width: 10rem;
+    }
+
+    @include desktop {
+      padding: 0.75rem 1.5rem;
+      margin-inline: auto;
+      max-width: 10rem;
+    }
 
     &:hover {
       background-color: $color-accent;
-      color: $color-dark;
+      color: $background-color;
+      /* White text on blue background */
+      transform: scale(1.05);
+      /* No opacity override needed here */
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.7);
+      /* Stronger blue glow */
+      border: 2px solid $color-accent;
+      /* Lighter border for glow effect */
+      outline: none;
+    }
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.5);
     }
   }
-}
 
+  /* Define pulse-glow animation for potential use */
+  @keyframes pulse-glow {
+    0% {
+      box-shadow: 0 0 5px rgba(212, 175, 55, 0.6);
+    }
 
-.hero__cta {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  // border: 2px solid $color-accent;
-  color: $color-accent;
-  font-family: $font-body;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  // box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    50% {
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    }
 
-  &:hover {
-    // background-color: $color-accent;
-    color: $color-dark;
-    animation: pulse-glow 1.5s infinite;
-    transform: scale(1.05);
-    color: $background-color;
+    100% {
+      box-shadow: 0 0 5px rgba(212, 175, 55, 0.6);
+    }
   }
 }

@@ -1,45 +1,223 @@
 @use './variables' as *;
+@use './mixins' as *;
 
 .header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   z-index: 10;
 
+  @include mobile {
+    padding: 1rem;
+    padding-bottom: 0rem;
+    /* Add space for the divider */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    /* For positioning the pseudo-element */
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background-color: $color-accent;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @include tablet {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include desktop {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+  }
+
+  ;
+
+  .profilePicture {
+    background-color: $color-light;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    @include mobile {
+      width: 60px;
+      height: 60px;
+      margin: 0.5rem auto 1.5rem;
+      display: block;
+      position: relative;
+
+      /* Divider moved to header element
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.25rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        height: 3px;
+        background-color: $color-accent;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+      */
+    }
+
+    @include tablet {
+      width: 70px;
+      height: 70px;
+      margin-block-start: 1rem;
+      margin-inline-start: 2rem;
+      order: 1;
+    }
+
+    @include desktop {
+      width: 80px;
+      height: 80px;
+      margin-block-start: 0;
+      margin-inline-start: 2rem;
+      order: 1;
+    }
+  }
 
   &__logo {
-    font-size: 3rem;
     font-family: $font-fancy;
     color: $color-light;
     text-transform: uppercase;
-    letter-spacing: 4px;
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); // Make logo glow too
+
+    @include mobile {
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      margin: 0rem 0;
+      text-align: center;
+      order: 0;
+    }
+
+    @include tablet {
+      font-size: 2.5rem;
+      letter-spacing: 3px;
+      order: 0;
+      margin-right: auto;
+    }
+
+    @include desktop {
+      font-size: 3rem;
+      letter-spacing: 4px;
+    }
   }
 
   &__nav {
     list-style: none;
     display: flex;
-    gap: 2rem;
-    margin-inline-start: 1rem;
+
+    @include mobile {
+      align-items: center;
+      gap: 0.75rem;
+      margin-inline-start: 0;
+      margin-top: 0rem;
+      order: 2;
+      width: 100%;
+      padding: 0rem 0;
+      background-color: rgba(249, 250, 251, 0.1);
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+    }
+
+    @include tablet {
+      flex-direction: row;
+      gap: 1.5rem;
+      margin-inline-start: 0;
+      order: 2;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      gap: 2.5rem;
+      margin-inline-start: auto;
+      margin-inline-end: 2rem;
+      order: 2;
+    }
 
     li a {
       text-decoration: none;
       color: $text-color;
       font-family: $font-body;
       font-weight: 500;
-      font-size: 1.25rem;
       transition: color 0.3s ease, text-shadow 0.3s ease, font-size .3s ease;
+
+      @include mobile {
+        font-size: 1.1rem;
+        padding: 0.75rem 1.5rem;
+        display: block;
+        text-align: center;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+
+      @include tablet {
+        font-size: 1.15rem;
+      }
+
+      @include desktop {
+        font-size: 1.25rem;
+      }
 
       &:hover {
         color: $color-accent;
         font-size: 1.30rem;
         // text-shadow: 0 0 8px rgba(212, 175, 55, 0.6); // Gold glow on hover
       }
+    }
+  }
+}
+
+/* Mobile menu toggle - can be implemented later with JavaScript */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(59, 130, 246, 0.8);
+    border: none;
+    border-radius: 50%;
+    color: $color-light;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(59, 130, 246, 1);
+      transform: scale(1.05);
     }
   }
 }

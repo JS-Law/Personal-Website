@@ -1,7 +1,7 @@
 // src/components/Header.jsx
 import React from 'react';
 import '../styles/Header.scss';
-
+import profilePicture from '../Assets/pictureOfMe.png'
 export default function Header() {
   return (
     <header className="header">
@@ -14,6 +14,7 @@ export default function Header() {
             <li><a href="#contact">Blog</a></li>
           </ul>
         </nav>
+        <img src={profilePicture} alt="A picture of a man in front of a mountain range in Italy" className="profilePicture"/>
       </div>
     </header>
   );
