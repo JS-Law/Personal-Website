@@ -95,7 +95,7 @@ Here's a quick reference of common React hooks:
 When building applications with React, it's helpful to follow this process:
 
 1. **Break the UI into a component hierarchy**
-   - Draw boxes around every component and subcomponent 
+   - Draw boxes around every component and subcomponent
    - Name each component based on single responsibility principle
 
 2. **Build a static version first**

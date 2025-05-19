@@ -3,6 +3,34 @@ import matter from 'gray-matter';
 
 // No direct imports - we'll fetch markdown content
 
+// Helper function to preprocess markdown content
+function preprocessMarkdown(markdown) {
+  // Normalize newlines to LF (Unix style)
+  let processed = markdown.replace(/\r\n/g, '\n');
+  
+  // Ensure frontmatter has proper delimiter spacing
+  if (processed.startsWith('---')) {
+    // Find the end of frontmatter (second ---)
+    const endOfFrontmatter = processed.indexOf('---', 3);
+    if (endOfFrontmatter > 0) {
+      // Extract frontmatter content
+      const frontmatter = processed.substring(3, endOfFrontmatter).trim();
+      
+      // Normalize frontmatter: ensure each line is properly formatted for YAML
+      const normalizedFrontmatter = frontmatter
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .join('\n');
+      
+      // Reconstruct markdown with normalized frontmatter
+      processed = `---\n${normalizedFrontmatter}\n---\n${processed.substring(endOfFrontmatter + 3)}`;
+    }
+  }
+  
+  return processed;
+}
+
 // Function to extract metadata from markdown content
 function extractMetadata(markdown, slug) {
   try {
@@ -13,13 +41,20 @@ function extractMetadata(markdown, slug) {
       throw new Error('Markdown content is empty');
     }
     
+    // Preprocess the markdown to handle potential issues
+    const processedMarkdown = preprocessMarkdown(markdown);
+    console.log(`Processed markdown first 100 chars: ${processedMarkdown.substring(0, 100)}`);
+    
     // Check if the markdown has proper frontmatter format
-    if (!markdown.startsWith('---')) {
+    if (!processedMarkdown.startsWith('---')) {
       console.warn(`Markdown for ${slug} doesn't start with proper frontmatter delimiter`);
     }
     
-    // Parse the markdown file with gray-matter to extract frontmatter
-    const { data, content } = matter(markdown);
+    // Parse the markdown file with gray-matter with more options for robustness
+    const { data, content } = matter(processedMarkdown, {
+      excerpt: true,
+      excerpt_separator: '\n\n',
+    });
     
     console.log(`Parsed frontmatter data:`, data);
     
@@ -49,15 +84,33 @@ function extractMetadata(markdown, slug) {
     let partialContent = '';
     
     try {
-      // Try to extract title from markdown even if frontmatter parsing failed
-      const titleMatch = markdown.match(/# (.*?)(\n|$)/);
-      if (titleMatch && titleMatch[1]) {
-        title = titleMatch[1].trim();
+      // Try manual frontmatter extraction if gray-matter failed
+      const frontmatterMatch = markdown.match(/---\n([\s\S]*?)\n---\n([\s\S]*)/);
+      if (frontmatterMatch) {
+        const rawFrontmatter = frontmatterMatch[1];
+        partialContent = frontmatterMatch[2].trim();
+        
+        // Try to extract title and date from the raw frontmatter
+        const titleLine = rawFrontmatter.split('\n').find(line => line.startsWith('title:'));
+        if (titleLine) {
+          title = titleLine.substring(6).trim();
+        }
+        
+        const dateLine = rawFrontmatter.split('\n').find(line => line.startsWith('date:'));
+        if (dateLine) {
+          date = dateLine.substring(5).trim();
+        }
+      } else {
+        // Fallback to searching for a markdown title if frontmatter parsing failed completely
+        const titleMatch = markdown.match(/# (.*?)(\n|$)/);
+        if (titleMatch && titleMatch[1]) {
+          title = titleMatch[1].trim();
+        }
+        
+        // Get some content even if parsing failed
+        partialContent = markdown.replace(/---[\s\S]*?---/, '')  // Remove frontmatter
+                               .trim();
       }
-      
-      // Get some content even if parsing failed
-      partialContent = markdown.replace(/---[\s\S]*?---/, '')  // Remove frontmatter
-                             .trim();
     } catch (parseError) {
       console.error('Failed to extract partial content:', parseError);
     }
@@ -162,6 +215,7 @@ export const useBlogPost = (slug) => {
         try {
           // Extract metadata and content
           console.log('Calling extractMetadata...');
+          console.log('Markdown sample for debugging:', markdown.substring(0, 300));
           const fullPostData = extractMetadata(markdown, slug);
           
           // Merge with known post info for better error handling

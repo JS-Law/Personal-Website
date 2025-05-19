@@ -39,16 +39,20 @@ export default function BlogPost() {
       <Header />
       
       <div className="blog-post__container">
+      
         {loading ? (
           <div className="blog-post__loading">Loading post...</div>
         ) : error ? (
           <div className="blog-post__error">{error}</div>
         ) : post ? (
           <>
-            <div className="blog-post__header">
+            <div className="blog-post__navigation">
               <Link to="/blog" className="blog-post__back">
-                ← Back to Blog
+                <span className="blog-post__back-arrow">←</span> Back to Blog
               </Link>
+            </div>
+            
+            <div className="blog-post__header">
               <h1 className="blog-post__title">{post.title}</h1>
               <div className="blog-post__meta">
                 <span className="blog-post__date">{post.date}</span>
@@ -78,9 +82,11 @@ export default function BlogPost() {
           <div className="blog-post__not-found">
             <h2>Post Not Found</h2>
             <p>Sorry, the blog post you're looking for could not be found.</p>
-            <Link to="/blog" className="blog-post__back">
-              Return to Blog
-            </Link>
+            <div className="blog-post__navigation">
+              <Link to="/blog" className="blog-post__back blog-post__back--button">
+                Return to Blog
+              </Link>
+            </div>
           </div>
         )}
       </div>
