@@ -32,24 +32,25 @@ export default function About() {
     <div className="about">
       <Header />
       
-      <section className="about__intro">
-        <div className="about__intro-content">
-          <h1 className="about__title">About Me</h1>
-          <p className="about__blurb">
-            I'm a passionate self-taught developer who transitioned from IT support to full-stack development. 
-            With a background in technical problem-solving and a love for creating elegant solutions, 
-            I bring both technical expertise and creative thinking to every project.
-          </p>
-          <p className="about__blurb">
-            When I'm not coding, you can find me hiking in the mountains, experimenting with 
-            new recipes, or diving into a good book on technology and innovation.
-          </p>
-        </div>
-      </section>
+      <div className="page-overlay">
+        <section className="about__intro">
+          <div className="about__intro-content">
+            <h1 className="about__title">About Me</h1>
+            <p className="about__blurb">
+              I'm a passionate self-taught developer who transitioned from IT support to full-stack development. 
+              With a background in technical problem-solving and a love for creating elegant solutions, 
+              I bring both technical expertise and creative thinking to every project.
+            </p>
+            <p className="about__blurb">
+              When I'm not coding, you can find me hiking in the mountains, experimenting with 
+              new recipes, or diving into a good book on technology and innovation.
+            </p>
+          </div>
+        </section>
 
-      <section className="about__timeline-section">
-        <h2 className="about__subtitle">My Journey</h2>
-        <div className="timeline">
+        <section className="about__timeline-section">
+          <h2 className="about__subtitle">My Journey</h2>
+          <div className="timeline">
           {workHistory.map((job) => (
             <div className="timeline__item" key={job.id}>
               <div className="timeline__period">{job.period}</div>
@@ -61,7 +62,8 @@ export default function About() {
             </div>
           ))}
         </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

@@ -2,28 +2,16 @@
 @use './mixins' as *;
 
 .blog {
-  background-color: $background-color;
   color: $text-color;
-  min-height: 100vh;
-  padding-top: 6rem;
+  /* min-height removed as it's handled by page-overlay */
+  position: relative;
+  z-index: 1;
   
-  &__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    
-    @include tablet {
-      padding: 3rem;
-    }
-    
-    @include desktop {
-      padding: 4rem;
-    }
-  }
+  // Container now handled by page-container class
   
   &__header {
-    text-align: center;
-    margin-bottom: 3rem;
+    text-align: left;
+    margin-bottom: 2.5rem;
   }
   
   &__title {
@@ -32,6 +20,18 @@
     font-weight: 700;
     color: $color-dark;
     margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background-color: $color-accent;
+    }
   }
   
   &__description {
@@ -57,13 +57,16 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    width: 100%;
     
     @include tablet {
       grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
     
     @include desktop {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
     }
   }
 }

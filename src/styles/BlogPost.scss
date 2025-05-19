@@ -3,10 +3,11 @@
 @use 'sass:color';
 
 .blog-post-page {
-  background-color: $background-color;
   color: $text-color;
   min-height: 100vh;
   padding-top: 6rem;
+  position: relative;
+  z-index: 1;
 }
 
 // Container for blog post content
@@ -14,6 +15,9 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: rgba($background-color, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   
   @include tablet {
     padding: 3rem;
@@ -33,6 +37,7 @@
   background-color: transparent;
   display: block;
   width: 100%;
+  pointer-events: auto;
 }
 
 // Fixed selector for back link to match component structure
@@ -46,6 +51,7 @@
   position: relative;
   z-index: 200;
   cursor: pointer;
+  pointer-events: auto;
   padding: 10px 20px;
   font-size: 1.1rem;
   border-radius: 4px;

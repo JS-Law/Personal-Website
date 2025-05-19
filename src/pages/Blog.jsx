@@ -12,7 +12,7 @@ export default function Blog() {
     <div className="blog">
       <Header />
       
-      <div className="blog__container">
+      <div className="page-overlay">
         <div className="blog__header">
           <h1 className="blog__title">My Blog</h1>
           <p className="blog__description">
