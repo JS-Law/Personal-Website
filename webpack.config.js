@@ -14,7 +14,18 @@ module.exports = {
   },
 
   devServer: {
-    static: path.resolve(__dirname, "dist"),
+    static: [
+      {
+        directory: path.resolve(__dirname, "dist"),
+      },
+      {
+        directory: path.resolve(__dirname, "src"),
+      },
+      {
+        directory: path.resolve(__dirname, "src/content"),
+        publicPath: '/content'
+      }
+    ],
     port: 8080,
     open: true,
     hot: true,
@@ -46,6 +57,10 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.md$/,
+        use: 'raw-loader',
       },
     ],
   },

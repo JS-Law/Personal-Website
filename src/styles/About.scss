@@ -1,0 +1,235 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.about {
+  background-color: $background-color;
+  color: $text-color;
+  min-height: 100vh;
+
+  &__intro {
+    padding: 8rem 2rem 3rem;
+    background-color: rgba(59, 130, 246, 0.05);
+    
+    @include tablet {
+      padding: 10rem 4rem 4rem;
+    }
+    
+    @include desktop {
+      padding: 12rem 8rem 5rem;
+    }
+  }
+
+  &__intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fade-in 1s ease-out;
+  }
+
+  &__title {
+    font-family: $font-header;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: $color-dark;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background-color: $color-accent;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-header;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    text-align: center;
+    color: $color-dark;
+  }
+
+  &__blurb {
+    font-family: $font-body;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  &__timeline-section {
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    
+    @include tablet {
+      padding: 5rem 4rem;
+    }
+    
+    @include desktop {
+      padding: 6rem 2rem;
+    }
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 3rem auto 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 3px;
+    background-color: $color-accent;
+    
+    @include tablet {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  &__item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 45px;
+    
+    @include tablet {
+      padding-left: 0;
+      width: 50%;
+      
+      &:nth-child(even) {
+        margin-left: 50%;
+        padding-left: 30px;
+        padding-right: 0;
+        
+        .timeline__period {
+          left: 30px;
+          right: auto;
+          text-align: left;
+        }
+        
+        .timeline__content::before {
+          left: -10px;
+          border-width: 10px 10px 10px 0;
+          border-color: transparent white transparent transparent;
+        }
+      }
+      
+      &:nth-child(odd) {
+        padding-right: 30px;
+        
+        .timeline__period {
+          right: 30px;
+          left: auto;
+          text-align: right;
+        }
+        
+        .timeline__content::before {
+          right: -10px;
+          border-width: 10px 0 10px 10px;
+          border-color: transparent transparent transparent white;
+        }
+      }
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 13px;
+      background-color: $color-accent;
+      border: 3px solid white;
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+      
+      @include tablet {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  
+  &__period {
+    font-family: $font-header;
+    font-weight: 600;
+    color: $color-accent;
+    margin-bottom: 0.5rem;
+    position: relative;
+    
+    @include tablet {
+      position: absolute;
+      top: 0;
+      width: 100px;
+    }
+  }
+  
+  &__content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    @include tablet {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
+    }
+  }
+  
+  &__title {
+    font-family: $font-header;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: $text-color;
+  }
+  
+  &__company {
+    font-family: $font-body;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: $color-dark;
+  }
+  
+  &__description {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

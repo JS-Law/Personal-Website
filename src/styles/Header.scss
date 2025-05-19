@@ -85,19 +85,30 @@
       width: 70px;
       height: 70px;
       margin-block-start: 1rem;
-      margin-inline-start: 2rem;
+      margin-inline-start: 8rem;
       order: 1;
     }
 
     @include desktop {
-      width: 80px;
-      height: 80px;
+      width: 180px;
+      height: 180px;
       margin-block-start: 0;
-      margin-inline-start: 2rem;
+      margin-block-start: 3rem;
+      margin-inline-start: 5rem;
       order: 1;
     }
   }
 
+  .logo-link {
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
   &__logo {
     font-family: $font-fancy;
     color: $color-light;
@@ -145,9 +156,9 @@
     @include tablet {
       flex-direction: row;
       gap: 1.5rem;
-      margin-inline-start: 0;
+      padding-inline-end: 1rem;
       order: 2;
-      justify-content: flex-end;
+      justify-content: center;
       flex-grow: 1;
     }
 
@@ -159,7 +170,7 @@
       order: 2;
     }
 
-    li a {
+    li a, li .MuiLink-root {
       text-decoration: none;
       color: $text-color;
       font-family: $font-body;
