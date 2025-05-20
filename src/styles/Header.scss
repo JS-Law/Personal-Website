@@ -65,20 +65,6 @@
       margin: 0.5rem auto 1.5rem;
       display: block;
       position: relative;
-
-      /* Divider moved to header element
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -1.25rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        height: 3px;
-        background-color: $color-accent;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-      }
-      */
     }
 
     @include tablet {
@@ -168,6 +154,7 @@
       margin-inline-start: auto;
       margin-inline-end: 2rem;
       order: 2;
+      position: relative;
     }
 
     li a,
