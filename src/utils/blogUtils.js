@@ -34,8 +34,8 @@ function preprocessMarkdown(markdown) {
 // Function to extract metadata from markdown content
 function extractMetadata(markdown, slug) {
   try {
-    console.log(`Extracting metadata for ${slug}, content length: ${markdown.length}`);
-    console.log(`First 100 chars of markdown: ${markdown.substring(0, 100)}`);
+    // console.log(`Extracting metadata for ${slug}, content length: ${markdown.length}`);
+    // console.log(`First 100 chars of markdown: ${markdown.substring(0, 100)}`);
     
     if (!markdown || markdown.trim() === '') {
       throw new Error('Markdown content is empty');
@@ -43,7 +43,7 @@ function extractMetadata(markdown, slug) {
     
     // Preprocess the markdown to handle potential issues
     const processedMarkdown = preprocessMarkdown(markdown);
-    console.log(`Processed markdown first 100 chars: ${processedMarkdown.substring(0, 100)}`);
+    // console.log(`Processed markdown first 100 chars: ${processedMarkdown.substring(0, 100)}`);
     
     // Check if the markdown has proper frontmatter format
     if (!processedMarkdown.startsWith('---')) {
@@ -56,7 +56,7 @@ function extractMetadata(markdown, slug) {
       excerpt_separator: '\n\n',
     });
     
-    console.log(`Parsed frontmatter data:`, data);
+    // console.log(`Parsed frontmatter data:`, data);
     
     // Convert tags string to array if needed
     let tags = data.tags;
@@ -75,8 +75,8 @@ function extractMetadata(markdown, slug) {
       content
     };
   } catch (error) {
-    console.error(`Error extracting metadata from ${slug}:`, error);
-    console.error(`Error stack:`, error.stack);
+    // console.error(`Error extracting metadata from ${slug}:`, error);
+    // console.error(`Error stack:`, error.stack);
     
     // Try to salvage what we can
     let title = 'Error Loading Post';
@@ -204,8 +204,8 @@ export const useBlogPost = (slug) => {
         }
         
         const markdown = await response.text();
-        console.log(`Markdown content loaded, length: ${markdown.length}`);
-        console.log('First 100 chars:', markdown.substring(0, 100) + '...');
+        // console.log(`Markdown content loaded, length: ${markdown.length}`);
+        // console.log('First 100 chars:', markdown.substring(0, 100) + '...');
         
         // Validate the markdown content
         if (!markdown || markdown.trim() === '') {
@@ -214,8 +214,8 @@ export const useBlogPost = (slug) => {
         
         try {
           // Extract metadata and content
-          console.log('Calling extractMetadata...');
-          console.log('Markdown sample for debugging:', markdown.substring(0, 300));
+          // console.log('Calling extractMetadata...');
+          // console.log('Markdown sample for debugging:', markdown.substring(0, 300));
           const fullPostData = extractMetadata(markdown, slug);
           
           // Merge with known post info for better error handling
@@ -223,13 +223,13 @@ export const useBlogPost = (slug) => {
             ...postInfo,
             ...fullPostData
           });
-          console.log('Post data successfully set:', fullPostData.title);
+          // console.log('Post data successfully set:', fullPostData.title);
         } catch (parseError) {
           console.error("Error parsing markdown content:", parseError);
           console.error("Error stack:", parseError.stack);
           
           // Try to format the markdown directly if parsing fails
-          console.log('Attempting fallback rendering of raw markdown...');
+          // console.log('Attempting fallback rendering of raw markdown...');
           setPost({
             ...postInfo,
             content: markdown,

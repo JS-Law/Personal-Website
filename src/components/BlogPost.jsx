@@ -68,8 +68,6 @@ export default function BlogPost() {
             </div>
             
             <div className="blog-post__content">
-              {console.log('Post content:', post.content)}
-              {console.log('Post object:', post)}
               <ReactMarkdown
                 components={components}
                 remarkPlugins={[remarkGfm]}
