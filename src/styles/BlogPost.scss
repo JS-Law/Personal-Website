@@ -10,10 +10,7 @@
   z-index: 1;
 }
 
-// Container for blog post content
 .blog-post__container {
-  // max-width: 800px;
-  // height: 100vh;
   position: relative;
   margin: 0 auto;
   padding: 2rem;
@@ -33,7 +30,6 @@
   }
 }
 
-// Navigation container for back link
 .blog-post__navigation {
   margin-bottom: 2rem;
   padding: 1rem 0;
@@ -45,7 +41,6 @@
   pointer-events: auto;
 }
 
-// Fixed selector for back link to match component structure
 .blog-post__back {
   display: inline-block;
   font-family: $font-body;
