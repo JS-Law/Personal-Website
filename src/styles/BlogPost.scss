@@ -12,7 +12,9 @@
 
 // Container for blog post content
 .blog-post__container {
-  max-width: 800px;
+  // max-width: 800px;
+  // height: 100vh;
+  position: relative;
   margin: 0 auto;
   padding: 2rem;
   background-color: rgba($background-color, 0.95);
@@ -25,6 +27,9 @@
 
   @include desktop {
     padding: 4rem;
+    margin-inline-start: 27vw;
+    padding-inline-start: 15%;
+    padding-inline-end: 15%;
   }
 }
 
