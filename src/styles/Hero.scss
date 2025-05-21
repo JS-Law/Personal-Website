@@ -25,8 +25,8 @@
     /* From https://css.glass */
     background: rgba(249, 250, 251, 0.15);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(9.4px);
-    -webkit-backdrop-filter: blur(9.4px);
+    backdrop-filter: blur(3.4px);
+    -webkit-backdrop-filter: blur(3.4px);
 
     @include mobile {
       margin: 0;
@@ -140,6 +140,7 @@
       width: 60%;
       max-width: 200px;
       margin: 0 auto;
+      background-color: $background-color;
     }
 
     @include tablet {
