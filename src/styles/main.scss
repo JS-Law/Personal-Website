@@ -24,22 +24,23 @@ body {
   min-height: 100vh;
   background: rgba(249, 250, 251, 0.15);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.4px);
-  -webkit-backdrop-filter: blur(9.4px);
-  padding-top: 6rem; /* Space for header */
-  
+  backdrop-filter: blur(3.4px);
+  -webkit-backdrop-filter: blur(3.4px);
+  padding-top: 6rem;
+  /* Space for header */
+
   @media (max-width: 767px) {
     margin: 0;
-    padding: 6rem 2rem 2rem;
+    padding: 0rem 2rem 2rem;
     text-align: center;
   }
-  
+
   @media (min-width: 768px) and (max-width: 1023px) {
     margin-inline-start: 15vw;
     padding: 6rem 3rem 3rem;
     width: 75%;
   }
-  
+
   @media (min-width: 1024px) {
     margin-inline-start: 27vw;
     padding: 6rem 15% 4rem;
