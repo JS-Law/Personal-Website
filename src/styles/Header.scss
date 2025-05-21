@@ -80,7 +80,7 @@
       height: 180px;
       margin-block-start: 0;
       margin-block-start: 3rem;
-      margin-inline-start: 5rem;
+      margin-inline-start: 5.5rem;
       order: 1;
     }
   }
@@ -163,7 +163,11 @@
       color: $text-color;
       font-family: $font-body;
       font-weight: 500;
-      transition: color 0.3s ease, text-shadow 0.3s ease, font-size .3s ease;
+      transition: all 0.3s ease; // Changed to all for smoother transitions
+      display: inline-block; // Added to handle transform better
+      position: relative; // Added for better positioning
+      padding-block-start: .5rem;
+      padding-inline-start: .5rem; // Added consistent padding
 
       @include mobile {
         font-size: 1.1rem;
@@ -171,7 +175,6 @@
         display: block;
         text-align: center;
         width: 100%;
-        transition: all 0.3s ease;
       }
 
       @include tablet {
@@ -184,8 +187,8 @@
 
       &:hover {
         color: $color-accent;
-        font-size: 1.30rem;
-        // text-shadow: 0 0 8px rgba(212, 175, 55, 0.6); // Gold glow on hover
+        transform: scale(1.05); // Removed !important
+        z-index: 1; // Added to prevent overlap issues
       }
     }
   }
