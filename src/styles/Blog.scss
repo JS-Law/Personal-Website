@@ -6,14 +6,15 @@
   /* min-height removed as it's handled by page-overlay */
   position: relative;
   z-index: 1;
-  
+
   // Container now handled by page-container class
-  
+
   &__header {
     text-align: left;
     margin-bottom: 2.5rem;
+    margin-block-start: 1.5rem;
   }
-  
+
   &__title {
     font-family: $font-header;
     font-size: 2.5rem;
@@ -22,7 +23,7 @@
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -33,7 +34,7 @@
       background-color: $color-accent;
     }
   }
-  
+
   &__description {
     font-family: $font-body;
     font-size: 1.2rem;
@@ -41,29 +42,30 @@
     margin: 0 auto 2rem;
     line-height: 1.6;
   }
-  
-  &__loading, &__error {
+
+  &__loading,
+  &__error {
     text-align: center;
     padding: 2rem;
     font-family: $font-body;
     font-size: 1.2rem;
   }
-  
+
   &__error {
     color: #e53e3e;
   }
-  
+
   &__posts {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
     width: 100%;
-    
+
     @include tablet {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
-    
+
     @include desktop {
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
@@ -80,37 +82,37 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
-  
+
   &__content {
     padding: 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
-  
+
   &__title {
     font-family: $font-header;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
     line-height: 1.3;
-    
+
     a {
       color: $text-color;
       text-decoration: none;
       transition: color 0.3s ease;
-      
+
       &:hover {
         color: $color-accent;
       }
     }
   }
-  
+
   &__meta {
     display: flex;
     gap: 1rem;
@@ -119,7 +121,7 @@
     color: #6b7280;
     margin-bottom: 1rem;
   }
-  
+
   &__excerpt {
     font-family: $font-body;
     font-size: 1rem;
@@ -127,13 +129,13 @@
     margin-bottom: 1.5rem;
     flex-grow: 1;
   }
-  
+
   &__tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
-    
+
     .tag {
       background-color: rgba(59, 130, 246, 0.1);
       color: $color-accent;
@@ -143,7 +145,7 @@
       font-weight: 500;
     }
   }
-  
+
   &__read-more {
     align-self: flex-start;
     font-family: $font-body;
@@ -153,7 +155,7 @@
     padding: 0.5rem 0;
     position: relative;
     transition: color 0.3s ease;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -164,14 +166,13 @@
       background-color: $color-accent;
       transition: width 0.3s ease;
     }
-    
+
     &:hover {
       color: $color-dark;
-      
+
       &::after {
         width: 100%;
       }
     }
   }
 }
-
