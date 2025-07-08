@@ -8,21 +8,21 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: 'Example Project 1',
-      description: 'A brief description of this project and what it accomplishes. This is a placeholder that you can replace with your actual project details.',
-      technologies: ['React', 'Node.js', 'CSS'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example/project1',
-      iframeUrl: 'https://example.com'
+      title: 'React Documentation',
+      description: 'The official React documentation - a great example of clean, modern web design and excellent user experience for developers.',
+      technologies: ['React', 'Next.js', 'TypeScript'],
+      liveUrl: 'https://react.dev',
+      githubUrl: 'https://github.com/reactjs/react.dev',
+      iframeUrl: 'https://react.dev'
     },
     {
       id: 2,
-      title: 'Example Project 2',
-      description: 'Another project description showcasing different technologies and approaches. This demonstrates the card layout structure.',
-      technologies: ['JavaScript', 'HTML', 'Sass'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example/project2',
-      iframeUrl: 'https://example.com'
+      title: 'CSS-Tricks',
+      description: 'A web design community website that showcases modern CSS techniques and responsive design patterns.',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      liveUrl: 'https://css-tricks.com',
+      githubUrl: 'https://github.com/chriscoyier/css-tricks',
+      iframeUrl: 'https://css-tricks.com'
     }
   ];
 
@@ -39,8 +39,12 @@ export default function Projects() {
         </div>
         
         <div className="projects__grid">
-          {projects.map((project) => (
-            <div className="project-card" key={project.id}>
+          {projects.map((project, index) => (
+            <div 
+              className="project-card" 
+              key={project.id}
+              style={{ '--animation-delay': `${index * 0.2}s` }}
+            >
               <div className="project-card__preview">
                 <iframe
                   src={project.iframeUrl}
