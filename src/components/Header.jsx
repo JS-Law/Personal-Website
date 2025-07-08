@@ -13,7 +13,7 @@ export default function Header() {
         <nav>
           <ul className="header__nav">
             <li><Link to="/about">About</Link></li>
-            <li><Link to="/#projects">Projects</Link></li>
+            <li><Link to="/projects">Projects</Link></li>
             <li><Link to="/blog">Blog</Link></li>
           </ul>
         </nav>

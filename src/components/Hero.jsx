@@ -16,7 +16,7 @@ export default function Hero() {
           I'm Jeff—a self-taught developer on a journey from IT support to full-stack creation. I live for the ‘aha’ moments.
         </h1>
         <br />
-        <a href="#projects" className="hero__cta">View My Work</a>
+        <a href="/projects" className="hero__cta">View My Work</a>
       </div>
     </section>
   );
