@@ -258,19 +258,26 @@
 }
 
 // Loading state for iframes
-.project-card__preview::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
-  border: 3px solid #f3f4f6;
-  border-top: 3px solid $color-accent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  z-index: 1;
+.project-card__preview {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 3px solid #f3f4f6;
+    border-top: 3px solid $color-accent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+  }
+  
+  // Hide loading spinner when iframe is loaded
+  &.loaded::before {
+    display: none;
+  }
 }
 
 @keyframes spin {
@@ -302,7 +309,3 @@
   }
 }
 
-// Hide loading spinner once iframe loads
-.project-card__iframe[src]:not([src=""]) ~ .project-card__preview::before {
-  display: none;
-}

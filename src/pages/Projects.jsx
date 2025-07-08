@@ -4,6 +4,13 @@ import Header from '../components/Header';
 import '../styles/Projects.scss';
 
 export default function Projects() {
+  // Handle iframe load event to hide loading spinner
+  const handleIframeLoad = (event) => {
+    const iframe = event.target;
+    const previewContainer = iframe.parentElement;
+    previewContainer.classList.add('loaded');
+  };
+
   // Sample project data - you can replace this with your actual projects
   const projects = [
     {
@@ -17,12 +24,12 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: 'CSS-Tricks',
-      description: 'A web design community website that showcases modern CSS techniques and responsive design patterns.',
+      title: 'Example Portfolio Site',
+      description: 'A sample portfolio website demonstrating modern web development practices with clean design and responsive layout.',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      liveUrl: 'https://css-tricks.com',
-      githubUrl: 'https://github.com/chriscoyier/css-tricks',
-      iframeUrl: 'https://css-tricks.com'
+      liveUrl: 'https://www.w3schools.com',
+      githubUrl: 'https://github.com/example/portfolio',
+      iframeUrl: 'https://www.w3schools.com'
     }
   ];
 
@@ -52,6 +59,7 @@ export default function Projects() {
                   className="project-card__iframe"
                   loading="lazy"
                   sandbox="allow-scripts allow-same-origin"
+                  onLoad={handleIframeLoad}
                 />
               </div>
               
